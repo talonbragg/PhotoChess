@@ -8,15 +8,22 @@
   <body>
     <div id="board" style="width: 400px"></div>
     <button id="startbutton">Start</button>
-    <button id="clearbutton">Clear</script>
+    <button id="clearbutton">Clear</b>
+    <div id="statusEl"></div>
+    <
     <script src="enginegame.js"></script>
     <script>
       var cfg = {
         draggable: true,
         dropOffBoard: 'trash',
-        sparePieces: true
+        sparePieces: true,
+        onDragStart: onDragStart,
+        onDrop: onDrop,
+        onSnapEnd: onSnapEnd
       };
       
+      var game = new Ches();
+      var statusEl = $('statusEl');
       var board = ChessBoard('board', cfg);
       
       $('#startbutton').on('click', board.start);
