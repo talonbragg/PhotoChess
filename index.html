@@ -8,6 +8,8 @@
     <div id="board" style="width: 400px"></div>
     <script src="enginegame.js"></script>
     <script>
+      var board = ChessBoard('board');
+      
       var game = engineGame({book: 'book.bin'});
       
       function newGame() {
