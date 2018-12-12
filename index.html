@@ -96,6 +96,8 @@
          board = ChessBoard('board', cfg);
          
          updateStatus();
+         
+         stockfish.postMessage('uci');
                   
          $('#startbutton').on('click', board.start);
          $('#clearbutton').on('click', board.clear);
