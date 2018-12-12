@@ -10,19 +10,17 @@
     <button onclick="newGame()">Start</button>
     <script src="enginegame.js"></script>
     <script>
-      var board = ChessBoard('board');
+      var cfg = {
+        draggable: true,
+        dropOffBoard: 'snapback', // this is the default
+        position: 'start'
+      };
+      
+      var board = ChessBoard('board', cfg);
       
       var game = engineGame({book: 'book.bin'});
       
       function newGame() {
-        var baseTime = parseFloat($('#timeBase').val()) * 60;
-        var inc = parseFloat($('#timeInc').val());
-        var skill = parseInt($('#skillLevel').val());
-        game.reset();
-        game.setTime(baseTime, inc);
-        game.setSkillLevel(skill);
-        game.setPlayerColor($('#color-white').hasClass('active') ? 'white' : 'black');
-        game.setDisplayScore($('#showScore').is(':checked'));
         game.start();
       }
     </script>
