@@ -9,6 +9,7 @@
       <div id="board" style="width: 400px"></div>
       <button id="startbutton">Start</button>
       <button id="clearbutton">Clear</button>
+      <button id="showbestmove">Show Best Move</button>
       <div id="statusEl"></div>
       <div id="fen"></div>
       <div id="pgn"></div>
@@ -28,6 +29,7 @@
          var fenEl = $('fen');
          var pgnEl = $('pgn');
          var board = ChessBoard('board', cfg);
+         var bmfen;
          
          // do not pick up pieces if the game is over
          // only pick up pieces for the side to move
@@ -94,6 +96,9 @@
          
          $('#startbutton').on('click', board.start);
          $('#clearbutton').on('click', board.clear);
+         $('#showbestmove').on('click', function() {
+            var fen = board.fen();
+         });
          
          updateStatus();
       </script>
