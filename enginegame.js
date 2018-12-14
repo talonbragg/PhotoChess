@@ -5,7 +5,7 @@ var board,
 
 var minimaxRoot =function(depth, game, isMaximisingPlayer) {
 
-    var newGameMoves = game.ugly_moves();
+//     var newGameMoves = game.ugly_moves();
     var bestMove = -9999;
     var bestMoveFound;
 
