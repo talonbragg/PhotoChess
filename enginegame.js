@@ -11,7 +11,7 @@ var minimaxRoot =function(depth, game, isMaximisingPlayer) {
 
     for(var i = 0; i < newGameMoves.length; i++) {
         var newGameMove = newGameMoves[i]
-        game.ugly_move(newGameMove);
+        game.move(newGameMove);
         var value = minimax(depth - 1, game, -10000, 10000, !isMaximisingPlayer);
         game.undo();
         if(value >= bestMove) {
@@ -33,7 +33,7 @@ var minimax = function (depth, game, alpha, beta, isMaximisingPlayer) {
     if (isMaximisingPlayer) {
         var bestMove = -9999;
         for (var i = 0; i < newGameMoves.length; i++) {
-            game.ugly_move(newGameMoves[i]);
+            game.move(newGameMoves[i]);
             bestMove = Math.max(bestMove, minimax(depth - 1, game, alpha, beta, !isMaximisingPlayer));
             game.undo();
             alpha = Math.max(alpha, bestMove);
@@ -45,7 +45,7 @@ var minimax = function (depth, game, alpha, beta, isMaximisingPlayer) {
     } else {
         var bestMove = 9999;
         for (var i = 0; i < newGameMoves.length; i++) {
-            game.ugly_move(newGameMoves[i]);
+            game.move(newGameMoves[i]);
             bestMove = Math.min(bestMove, minimax(depth - 1, game, alpha, beta, !isMaximisingPlayer));
             game.undo();
             beta = Math.min(beta, bestMove);
@@ -188,7 +188,7 @@ var onDragStart = function (source, piece, position, orientation) {
 
 var makeBestMove = function () {
     var bestMove = getBestMove(game);
-    game.ugly_move(bestMove);
+    game.move(bestMove);
     board.position(game.fen());
     renderMoveHistory(game.history());
     if (game.game_over()) {
